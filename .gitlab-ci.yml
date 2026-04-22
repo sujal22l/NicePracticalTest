@@ -1,0 +1,26 @@
+stages:
+  - build
+  - test
+  - deploy
+
+image: maven:3.9.6-eclipse-temurin-17
+
+cache:
+  paths:
+    - .m2/repository
+
+build-job:
+  stage: build
+  script:
+    - mvn clean compile
+
+test-job:
+  stage: test
+  script:
+    - mvn test
+
+deploy-job:
+  stage: deploy
+  script:
+    - echo "Packaging app"
+    - mvn package
