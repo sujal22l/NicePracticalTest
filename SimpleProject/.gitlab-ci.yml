@@ -1,0 +1,9 @@
+stages:
+  - scheduled
+
+scheduled-job:
+  stage: scheduled
+  script:
+    - echo "Scheduled job running at $(date)"
+  only:
+    - schedules
